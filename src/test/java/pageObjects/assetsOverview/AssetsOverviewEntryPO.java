@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.concurrent.TimeUnit;
 
 public class AssetsOverviewEntryPO {
-    private final String url = "http://www.google.co.uk/";
     private final WebDriver driver;
 
     @FindBy(css = ".g .r")
@@ -31,7 +30,7 @@ public class AssetsOverviewEntryPO {
     }
 
     public void load() {
-        driver.get(url);
+        driver.get("");
     }
     public void searchFor(String searchString) {
         searchField.clear();

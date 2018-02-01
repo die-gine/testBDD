@@ -1,5 +1,5 @@
 #Author: rew@ti8m.ch
-@web @CMB-16 @sprint1
+@web @CMB-16
 Feature: todo
 
   Background:

@@ -34,7 +34,7 @@ import static ui.BrowserFactory.getBrowser;
  * </p>
  */
 public class SharedDriver extends EventFiringWebDriver {
-    private static final WebDriver REAL_DRIVER;
+    public static final WebDriver REAL_DRIVER;
     private static final Thread CLOSE_THREAD = new Thread() {
         @Override
         public void run() {
@@ -71,7 +71,7 @@ public class SharedDriver extends EventFiringWebDriver {
         manage().deleteAllCookies();
     }
 
-    @After
+   @After
     public void embedScreenshot(Scenario scenario) {
         try {
             byte[] screenshot = getScreenshotAs(OutputType.BYTES);

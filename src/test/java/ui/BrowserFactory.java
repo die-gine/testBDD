@@ -2,7 +2,7 @@ package ui;
 
 import org.openqa.selenium.WebDriver;
 
-class BrowserFactory {
+public class BrowserFactory {
 
     public static WebDriver getBrowser() throws Throwable {
         String desiredBrowserName = System.getProperty("browser", "chrome");
@@ -19,7 +19,7 @@ class BrowserFactory {
                 desiredBrowser = FirefoxBrowser.buildFirefoxBrowser();
                 break;
             default:
-                //work out what to do when a browser isn't needed
+                //todo
                 break;
         }
         return desiredBrowser;

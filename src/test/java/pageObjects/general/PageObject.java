@@ -19,19 +19,16 @@ public class PageObject {
     private final String url = getDashboardURL();
     private WebDriver driver;
 
-    @FindBy(xpath = "/html/body/div[1]/div/div[1]/nav/ul/li[2]/a/h6")
-    public WebElement balanceIcon;
-
-    @FindBy(xpath ="/html/body/div[1]/div/div[2]/div[3]/div[1]/div[1]/h1")
-    public WebElement contentHeaderTitle;
+    @FindBy(tagName ="h1")
+    WebElement contentHeaderTitle;
 
     @FindBy(xpath="/html/body/div[1]/div/div[1]/nav/ul/li[2]/a/h6")
-    public WebElement assetsMainMenuIcon;
+    WebElement assetsMainMenuIcon;
 
-    @FindBy(xpath="/html/body/div[1]/div/div[1]/nav/ul/li[1]/a/h6")
-    public WebElement dashboardMainMenuIcon;
+    @FindBy(xpath = "/html/body/div[1]/div/div[1]/nav/ul/li[1]/a/h6")
+    WebElement dashboardMainMenuIcon;
 
-    public By breadcrumpElements =  By.className("breadcrumbs__crumb");
+    By breadcrumpElements =  By.className("breadcrumbs__crumb");
 
     public PageObject(WebDriver commonDriver) {
         driver = commonDriver;
@@ -39,7 +36,7 @@ public class PageObject {
 
     }
 
-    public String getDashboardURL() {
+    String getDashboardURL() {
         String URL = "not set";
         {
             try {
@@ -69,7 +66,7 @@ public class PageObject {
     }
 
     public String getElementTextbyXpath(String arg1) {
-        WebElement result = null;
+        WebElement result;
         switch (arg1) {
             case "Vermögen":
                 result = assetsMainMenuIcon;
@@ -84,16 +81,13 @@ public class PageObject {
     }
 
     public String getListOfBreadcrumpItems() {
-       List<WebElement> elements = driver.findElements(breadcrumpElements);
-       List<String> items = new ArrayList<String>();
+        List<WebElement> elements = driver.findElements(breadcrumpElements);
+        List<String> items = new ArrayList<>();
         ArrayList<String> removeIds = new ArrayList<>();
         for (WebElement o:elements) {
             items.add(o.getText());
         }
         String itemCommaSeparated = String.join(", ", items);
-        for (String id : removeIds){
-            items.remove(id);
-        }
         takeScreenshotCurrentPage("CheckListOfBreadcrumpItems");
         return itemCommaSeparated;
     }

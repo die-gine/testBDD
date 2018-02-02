@@ -2,10 +2,10 @@ package ui;
 
 import org.openqa.selenium.WebDriver;
 
-public class BrowserFactory {
+class BrowserFactory {
 
-    public static WebDriver getBrowser() throws Throwable {
-        String desiredBrowserName = System.getProperty("browser", "chrome");
+    static WebDriver getBrowser() throws Throwable {
+        String desiredBrowserName = System.getProperty("browser", "browserstack");
         WebDriver desiredBrowser = null;
 
         switch(desiredBrowserName) {
@@ -17,6 +17,9 @@ public class BrowserFactory {
                 break;
             case "firefox":
                 desiredBrowser = FirefoxBrowser.buildFirefoxBrowser();
+                break;
+            case "browserstack":
+                desiredBrowser = BrowserStack.buildBrowserstack();
                 break;
             default:
                 //todo

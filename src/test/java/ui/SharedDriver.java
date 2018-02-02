@@ -1,12 +1,9 @@
 package ui;
 
 
-import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -34,11 +31,12 @@ import static ui.BrowserFactory.getBrowser;
  * </p>
  */
 public class SharedDriver extends EventFiringWebDriver {
-    public static final WebDriver REAL_DRIVER;
+    private static final WebDriver REAL_DRIVER;
     private static final Thread CLOSE_THREAD = new Thread() {
         @Override
         public void run() {
             REAL_DRIVER.close();
+
         }
     };
 
@@ -71,7 +69,12 @@ public class SharedDriver extends EventFiringWebDriver {
         manage().deleteAllCookies();
     }
 
-   @After
+    @After
+    public void sayHello(){
+        System.out.print("HEEEEEEEEEEEEEEELLO");
+    }
+
+   /*@After
     public void embedScreenshot(Scenario scenario) {
         try {
             byte[] screenshot = getScreenshotAs(OutputType.BYTES);
@@ -79,5 +82,9 @@ public class SharedDriver extends EventFiringWebDriver {
         } catch (WebDriverException somePlatformsDontSupportScreenshots) {
             System.err.println(somePlatformsDontSupportScreenshots.getMessage());
         }
-    }
+    }*/
+
+
+
+
 }

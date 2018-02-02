@@ -1,6 +1,14 @@
 #Author: rew@ti8m.ch
 @web @CMB-206 @CMB-470 @CMB-467 @CMB-469 @CMB-466 @sprint1
-Feature: todo
+Feature: Navigation
+  Der Benutzer kann mit Hilfe der Navigation alle relevanten Bereiche des Mobile Banking intuitiv erreichen und dies auf allen Kanälen.
+  Das Chrome unterscheidet folgende Bereiche:
+  Hauptmenü (Menü zur Navigation in die Hauptbereiche des Mobile Banking entlang der definierten Informationsarchitektur)
+  Suchfeld
+  Service Navigation (Zugriff auf Account-Einstellungen, Logout, Inbox, Document Safe usw.)
+  Content Area
+  Footer
+
   Test cases for
   - Check elements of main navigation
   - Check multilingualism of main navigation
@@ -43,7 +51,7 @@ Feature: todo
   Scenario Outline: Meta Navigation on dashboard is available
     Given is the "Dashboard Web"
     Then the <_elements_> are shown in Meta Navigation
-    And the <_elements> are clickable
+    And the <_elements_> are clickable
     Examples:
       | _elements_ |
       |  "Account"   |

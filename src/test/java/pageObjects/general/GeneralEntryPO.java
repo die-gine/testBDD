@@ -1,6 +1,7 @@
 package pageObjects.general;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,14 +12,17 @@ import java.util.concurrent.TimeUnit;
 
 public class GeneralEntryPO extends PageObject {
 
-    public WebDriver driver = getDriver();
+    private WebDriver driver = getDriver();
 
-    public GeneralEntryPO(WebDriver commonDriver) {
+    private GeneralEntryPO(WebDriver commonDriver) {
         super(commonDriver);
     }
 
     public PageObject load() {
         driver.get(getDashboardURL());
+
+        new WebDriverWait(driver, 5000).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
         return new GeneralEntryPO(driver);
     }
 

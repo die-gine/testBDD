@@ -14,10 +14,10 @@ Feature: todo
     When I click on <btn>
     Then I am on <page> page
 
-  Examples:
-  | user | language | btn | page |
-  |  Markus Monitor   |  Deutsch  |  Kontoübersicht   |  Kontoübersicht   |
-  |  Markus Monitor   |  English  |  Account Overview  |  Account Overview  |
+    Examples:
+      | user | language | btn | page |
+      |  Markus Monitor   |  Deutsch  |  Kontoübersicht   |  Kontoübersicht   |
+      |  Markus Monitor   |  English  |  Account Overview  |  Account Overview  |
 
   @test1 @markusMonitor
   Scenario: Login as existing customer with several bank accounts

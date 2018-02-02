@@ -32,7 +32,7 @@ public class AssetsOverviewSteps {
         balanceSheet = bs;
     }
 
-    @After
+   @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) currentPage.getDriver()).getScreenshotAs(OutputType.BYTES);

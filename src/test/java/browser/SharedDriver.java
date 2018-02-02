@@ -1,4 +1,4 @@
-package ui;
+package browser;
 
 
 import cucumber.api.java.After;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static ui.BrowserFactory.getBrowser;
+import static browser.BrowserFactory.getBrowser;
 
 /**
  * <p>

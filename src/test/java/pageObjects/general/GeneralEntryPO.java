@@ -14,7 +14,7 @@ public class GeneralEntryPO extends PageObject {
 
     private WebDriver driver = getDriver();
 
-    private GeneralEntryPO(WebDriver commonDriver) {
+    public GeneralEntryPO(WebDriver commonDriver) {
         super(commonDriver);
     }
 

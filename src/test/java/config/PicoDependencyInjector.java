@@ -1,7 +1,7 @@
-package support;
+package config;
 
 import cucumber.runtime.java.picocontainer.PicoFactory;
-import ui.SharedDriver;
+import browser.SharedDriver;
 
 
 public class PicoDependencyInjector extends PicoFactory {

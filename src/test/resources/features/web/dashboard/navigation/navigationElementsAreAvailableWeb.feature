@@ -3,11 +3,7 @@
 Feature: Navigation
   Der Benutzer kann mit Hilfe der Navigation alle relevanten Bereiche des Mobile Banking intuitiv erreichen und dies auf allen Kanälen.
   Das Chrome unterscheidet folgende Bereiche:
-  Hauptmenü (Menü zur Navigation in die Hauptbereiche des Mobile Banking entlang der definierten Informationsarchitektur)
-  Suchfeld
-  Service Navigation (Zugriff auf Account-Einstellungen, Logout, Inbox, Document Safe usw.)
-  Content Area
-  Footer
+  Hauptmenü, Suchfeld, Service Navigation, Content Area, Footer.
 
   Test cases for
   - Check elements of main navigation
@@ -25,6 +21,7 @@ Feature: Navigation
 
     Examples:
       | _elements_ | _header_ |
+      |  "Dashboard"   |  "Dashboard" |
       |  "Vermögen"   |  "Vermögen im Überblick" |
 
   Scenario Outline: Main Navigation is available in English

@@ -1,4 +1,4 @@
-package ui;
+package browser;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,0 +1,6 @@
+- Cucumber tests are organized in resources/features and taggeg by @mobile @web @iphone @android
+- features are mapped to selenium in java/steps
+- test environments are defined in runner classes, there are runners for android,
+  iphone and chrome executed in browserstack and a testrunner for testing new features locally
+
+- webdrivers are organized by browserfactory

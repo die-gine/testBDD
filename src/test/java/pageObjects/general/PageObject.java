@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,14 +20,18 @@ public class PageObject {
     private final Logger logger = LoggerFactory.getLogger(PageObject.class);
     private final String url = getDashboardURL();
     private WebDriver driver;
+    WebDriverWait wait;
 
     @FindBy(tagName ="h1")
     WebElement contentHeaderTitle;
 
-    @FindBy(xpath="/html/body/div[1]/div/div[1]/nav/ul/li[2]/a/h6")
+    @FindBy(tagName ="h2")
+    WebElement subContentHeaderTitle;
+
+    @FindBy(xpath="//span[@class='main-nav__item__label' and text()='Vermögen']")
     WebElement assetsMainMenuIcon;
 
-    @FindBy(xpath = "/html/body/div[1]/div/div[1]/nav/ul/li[1]/a/h6")
+    @FindBy(xpath = "//span[@class='main-nav__item__label' and text()='Dashboard']")
     WebElement dashboardMainMenuIcon;
 
     By breadcrumpElements =  By.className("breadcrumbs__crumb");
@@ -33,7 +39,6 @@ public class PageObject {
     public PageObject(WebDriver commonDriver) {
         driver = commonDriver;
         PageFactory.initElements(driver, this);
-
     }
 
     String getDashboardURL() {
@@ -53,19 +58,18 @@ public class PageObject {
     }
 
     public String getContentHeaderTitle(){
-       return contentHeaderTitle.getText();
+        return contentHeaderTitle.getText();
     }
+    public String getContentSubHeaderTitle() {
+        return subContentHeaderTitle.getText();
+    }
+
 
     public void switchToEnglish() {
         //#todo get current language and maybe switch
     }
 
-    public String getElementTextbyID(String arg1) {
-        //#todo get current text of element by id arg1
-        return "";
-    }
-
-    public String getElementTextbyXpath(String arg1) {
+    public String getMainMenueIcon(String arg1) {
         WebElement result;
         switch (arg1) {
             case "Vermögen":
@@ -95,11 +99,30 @@ public class PageObject {
     public void takeScreenshotCurrentPage(String filename){
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
+            String projectPath = new File("").getAbsolutePath();
             String filePath = TestConfig.valueFor("ScreenshotPath");
-            FileUtils.copyFile(scrFile, new File(filePath+filename+".png"));
+            FileUtils.copyFile(scrFile, new File(projectPath+filePath+filename+".png"));
             logger.debug(scrFile.getName()+".png - Screenshot created");
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
+
+    public void waitUntilElementIsClickable(WebDriver driver, WebElement element){
+        wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
+    public boolean isDisplayed(WebElement element, String view) {
+        Boolean present;
+        try {
+            element.isDisplayed();
+            present = true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return present;
+    }
+
+
 }

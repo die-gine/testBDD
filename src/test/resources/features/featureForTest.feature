@@ -1,6 +1,6 @@
 #Author: rew@ti8m.ch
-
-Feature: todo
+@sprint5
+Feature: TESTRUN ONLY
   Test cases for
   - FOR LOCAL TESTRUNS ONLY
 

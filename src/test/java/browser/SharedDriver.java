@@ -69,10 +69,6 @@ public class SharedDriver extends EventFiringWebDriver {
         manage().deleteAllCookies();
     }
 
-    @After
-    public void sayHello(){
-        System.out.print("HEEEEEEEEEEEEEEELLO");
-    }
 
    /*@After
     public void embedScreenshot(Scenario scenario) {
